@@ -4,12 +4,16 @@ var cheat_meals = [
     { 'Name': 'Montaditos' },
     { 'Name': 'Flower Burger' },
     { 'Name': 'Chorillano' },
-    { 'Name': 'Messicano' }
+    { 'Name': 'Messicano' },
+    { 'Name': 'California Bakery' },
+    { 'Name': 'BUL' },
+    { 'Name': 'I Love Poke' }
 ];
 
 var $roulette = $('.roulette');
 
 $('.spin').on('click', function() {
+    $roulette.removeClass("tada").animate({"font-size": "16px"}, 0);
     var total = cheat_meals.length,
         selected = Math.floor( Math.random() * total*5 ),
         i = 0;
@@ -19,6 +23,9 @@ $('.spin').on('click', function() {
             setTimeout((function(i){
                 return function(){
                     $roulette.text( cheat_meals[i%total].Name.toUpperCase() );
+                    if( i === selected ) {
+                        $roulette.animate({"font-size": "30px"}, "fast").addClass("tada");
+                    }
                 };
             }(i)), i * 100 );
 
