@@ -1,5 +1,4 @@
-var cheat_meals = [
-  { Name: "I Love Poke", Url: "https://www.ilovepoke.it/" },
+const cheat_meals = [
   { Name: "Toyama", Url: "http://www.ristorantetoyama.it/" },
   { Name: "Wakaba", Url: "https://wakabamilano.blogspot.com/?m=1" },
   {
@@ -34,26 +33,28 @@ var cheat_meals = [
     Name: "La Romana",
     Url: "https://www.gelateriaromana.com/53-gelateria-milano.php",
   },
+  { Name: "Kanji", Url: "http://www.kanjimilano.com/" },
 ];
 
-var $rouletteContainer = $(".roulette-container");
-var $roulette = $(".roulette");
-var $linkTo = $(".link-to");
+const rouletteContainer = document.querySelector(".roulette-container");
+const roulette = document.querySelector(".roulette");
+const linkTo = document.querySelector(".link-to");
+const spin = document.querySelector(".spin");
 
-$(".spin").on("click", function () {
-  $rouletteContainer.removeClass("tada").animate({ "font-size": "16px" }, 0);
-  var total = cheat_meals.length,
-    selected = Math.floor(Math.random() * total * 5),
-    i = 0;
+spin.addEventListener("click", () => {
+  rouletteContainer.classList.remove("tada");
 
-  for (i = 0; i <= total * 5; i++) {
+  const total = cheat_meals.length;
+  const selected = Math.floor(Math.random() * total);
+
+  for (let i = 0; i <= total; i++) {
     setTimeout(
-      (function (i) {
-        return function () {
-          $roulette.text(cheat_meals[i % total].Name.toUpperCase());
-          $linkTo[0].href = cheat_meals[i % total].Url;
+      ((i) => {
+        return () => {
+          roulette.innerText = cheat_meals[i % total].Name;
+          linkTo.href = cheat_meals[i % total].Url;
           if (i === selected) {
-            $roulette.animate({ "font-size": "30px" }, "fast").addClass("tada");
+            roulette.classList.add("tada");
           }
         };
       })(i),
