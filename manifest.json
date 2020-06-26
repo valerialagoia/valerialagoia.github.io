@@ -1,11 +1,11 @@
 {
   "name": "Cheat Meal Roulette",
   "short_name": "CM Roulette",
-  "theme_color": "#fc60a7",
-  "background_color": "#00f3ff",
+  "theme_color": "#00f3ff",
+  "background_color": "#1e1e1e",
   "display": "fullscreen",
-  "Scope": "/cmr",
-  "start_url": "/cmr/?utm_source=pwa",
+  "scope": "/",
+  "start_url": "/?utm_source=pwa",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",
